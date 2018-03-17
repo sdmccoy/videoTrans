@@ -1,0 +1,10 @@
+/home/dingo/Documents/code/videoTrans/bin/Debug/netcoreapp2.0/videoTrans.deps.json
+/home/dingo/Documents/code/videoTrans/bin/Debug/netcoreapp2.0/videoTrans.runtimeconfig.json
+/home/dingo/Documents/code/videoTrans/bin/Debug/netcoreapp2.0/videoTrans.runtimeconfig.dev.json
+/home/dingo/Documents/code/videoTrans/bin/Debug/netcoreapp2.0/videoTrans.dll
+/home/dingo/Documents/code/videoTrans/bin/Debug/netcoreapp2.0/videoTrans.pdb
+/home/dingo/Documents/code/videoTrans/obj/Debug/netcoreapp2.0/videoTrans.csproj.CoreCompileInputs.cache
+/home/dingo/Documents/code/videoTrans/obj/Debug/netcoreapp2.0/videoTrans.AssemblyInfoInputs.cache
+/home/dingo/Documents/code/videoTrans/obj/Debug/netcoreapp2.0/videoTrans.AssemblyInfo.cs
+/home/dingo/Documents/code/videoTrans/obj/Debug/netcoreapp2.0/videoTrans.dll
+/home/dingo/Documents/code/videoTrans/obj/Debug/netcoreapp2.0/videoTrans.pdb
