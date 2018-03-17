@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Net.Http;
+using System.IO;
+using System.Threading;
+using Newtonsoft.Json;
 
 namespace videoTrans
 {
@@ -10,14 +13,25 @@ namespace videoTrans
             Console.WriteLine("My video transcribe app!");
             var apiUrl = "https://videobreakdown.azure-api.net/Breakdowns/Api/Partner/Breakdowns";
             var client = new HttpClient();
-            string API_KEY;
-            API_KEY = Environment.GetEnvironmentVariable("API_KEY_PRIMARY");
-            Console.WriteLine(API_KEY);
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "...");
+            // TODO: REMOVE API KEY, SET AS HIDDEN VARIABLE.
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "import");
             var content = new MultipartFormDataContent();
-            Console.WriteLine("The video is uploading...");
-            // hard coded variable, should be dynamically passed in through a front-end input
-            var videoUrl = "https://www.youtube.com/watch?v=Fzn_AKN67oI";
+            content.Add(new StreamContent(File.Open("./tooquick.mp4", FileMode.Open)), "Video", "Video");
+            // Console.WriteLine("The video is uploading...");
+            // // hard coded variable, should be dynamically passed in through a front-end input
+            // var videoUrl = "https://www.youtube.com/watch?v=Fzn_AKN67oI";
+            // result returns the id of the video after upload
+            var result = client.PostAsync(apiUrl + "?name=testname&privacy=public", content).Result;
+            var json = result.Content.ReadAsStringAsync().Result;
+            Console.WriteLine("Video ID: ");
+            Console.WriteLine(json);
+            // convert the ID to make a GET request
+            var id = JsonConvert.DeserializeObject<string>(json);
+
+            while (true) {
+                Thread.Sleep(10000);
+
+            }
 
         }
     }
