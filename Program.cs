@@ -14,25 +14,51 @@ namespace videoTrans
             var apiUrl = "https://videobreakdown.azure-api.net/Breakdowns/Api/Partner/Breakdowns";
             var client = new HttpClient();
             // TODO: REMOVE API KEY, SET AS HIDDEN VARIABLE.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "import");
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "");
             var content = new MultipartFormDataContent();
-            content.Add(new StreamContent(File.Open("./tooquick.mp4", FileMode.Open)), "Video", "Video");
-            // Console.WriteLine("The video is uploading...");
-            // // hard coded variable, should be dynamically passed in through a front-end input
-            // var videoUrl = "https://www.youtube.com/watch?v=Fzn_AKN67oI";
+            // TODO: hard coded file path, should be dynamically passed in through a front-end input
+            content.Add(new StreamContent(File.Open("./ww.mp4", FileMode.Open)), "Video", "Video");
+            Console.WriteLine("The video is uploading...");
             // result returns the id of the video after upload
+            // send POST request to upload video
             var result = client.PostAsync(apiUrl + "?name=testname&privacy=public", content).Result;
             var json = result.Content.ReadAsStringAsync().Result;
-            Console.WriteLine("Video ID: ");
+            Console.WriteLine("Uploaded: ");
             Console.WriteLine(json);
             // convert the ID to make a GET request
             var id = JsonConvert.DeserializeObject<string>(json);
 
             while (true) {
+                // set a timeout
                 Thread.Sleep(10000);
+                // GET request with video id to return the state of the request 
+                result = client.GetAsync(string.Format(apiUrl + "/{0}/State", id)).Result;
+                json = result.Content.ReadAsStringAsync().Result;
 
+                Console.WriteLine();
+                Console.WriteLine("State: ");
+                Console.WriteLine(json);
+
+                dynamic state = JsonConvert.DeserializeObject(json);
+                if (state.state != "Uploaded" && state.state != "Processing")
+                {
+                    break;
+                }
             }
+        // GET request to return full JSON object   
+        result = client.GetAsync(string.Format(apiUrl + "/{0}", id)).Result;
+        json = result.Content.ReadAsStringAsync().Result;
+        Console.WriteLine();
+        Console.WriteLine("Full JSON:");
+        Console.WriteLine(json);
+        string dir = @"video-output";
+        if (!Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
 
+        System.IO.File.WriteAllText(Path.Combine(dir, id + ".json"), json);
+    
         }
     }
 }
