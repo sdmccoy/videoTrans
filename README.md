@@ -2,9 +2,7 @@
 
 Application application utilizing the SendBird API to implement a live chat room.
 
-<img src='./assets/video.jpeg' width='100px' height='100px'/>
-<img src='./assets/arrow.png' width='100px' height='100px'/>
-<img src='./assets/text.png' width='100px' height='100px'/>
+<img src='./assets/video.jpeg' width='100px' height='100px' /> <img src='./assets/arrow.png' width='100px' height='100px' /> <img src='./assets/text.png' width='100px' height='100px'/>
 
 
 ## LANGUAGE
@@ -48,7 +46,7 @@ Application application utilizing the SendBird API to implement a live chat room
   [Video Indexer SDK](https://videobreakdown.portal.azure-api.net/get-started "Video Indexer SDK")
 
 
-- Import your API key to the second paramater on line 17
+- Import your API key to the second parameter on line 17
   - DO NOT hard code it and push it up.
 
   ```cs
