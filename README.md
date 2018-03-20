@@ -1,6 +1,6 @@
 # Video Transcriber
 
-Application application utilizing the SendBird API to implement a live chat room.
+Application utilizing the Azure Video Indexer SDK to implement a video to text transciption.
 
 <img src='./assets/video.jpeg' width='100px' height='100px' /> <img src='./assets/arrow.png' width='100px' height='100px' /> <img src='./assets/text.png' width='100px' height='100px'/>
 
@@ -21,12 +21,12 @@ Application application utilizing the SendBird API to implement a live chat room
 - in development stage
 
 ## CODE REPOSITORY
-- GitHub { `you are here`}
+- GitHub {`you are here`}
 
 ## TOOLS
 - C#
-- .Net Project
-- Azure Video Indexer
+- .NET Project
+- Azure Video Indexer SDK
 
 
 ## GETTING STARTED
@@ -73,13 +73,15 @@ Application application utilizing the SendBird API to implement a live chat room
   ```
   State: 
   {"state":"Processing","progress":"30%"}
+  State: 
+  {"state":"Processing","progress":"50%"}
   ```
   - The full transcription in JSON
   ```
   Full JSON:
   "accountId":"ecb2b9 ..........."
   ```
--  Your project directory will create a new directory called 'video-ouput' with the new JSON file saved with a unique video ID
+-  A new directory called 'video-ouput' will be generated with the new JSON file saved with a unique video ID file name in your root project directory.
 
 ## TODO's
 
